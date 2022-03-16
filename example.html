@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <script src="http://cogflex.com.au/jspsych/jspsych 6.3.1/jspsych.js"></script>
+    <script src="http://cogflex.com.au/jspsych/jspsych 6.3.1/plugins/jspsych-instructions.js"></script>
+    <script src="jspsych-dot-difference.js"></script>
+    <link href="http://cogflex.com.au/jspsych/jspsych 6.3.1/jspsych.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body></body>
+  <script>
+
+
+
+var dot_trial = {
+    type: "dot-difference",
+    choices: ['p', 'q'],
+    N_dots: [45,55],
+    background_col: "grey",
+    stimulus_duration: 160,
+    trial_duration: 2000
+};
+
+var dot_block = {
+  timeline: [dot_trial],
+  repetitions: 30
+}
+
+//**********************//
+// Example Instructions
+//**********************//
+
+instructions = {
+    type: 'instructions',
+    pages: [
+    'In this experiment, you will see two squares with dots in them flash up briefly on the screen (see below). <b>Your goal is to decide which side has the most dots.</b><br><br><img src = "example.png" width="1500" height="600"></img>',
+    "If you think that the square on the <b>left</b> has the most dots, hit the <b>'q'</b> key<br>If you think that the square on the <b>right</b> has the most dots, hit the <b>'p'</b> key.<br><br><img src = 'example.png' width='1500' height='600'></img><br><b>In this example, the correct answer would be the right square, so you would hit the 'p' key.</b>",
+    "You will only have a limited time to make your response, <b>so respond as fast and accurately as you can</b>. When you're ready to begin hit 'Next'."
+
+    ],
+    show_clickable_nav: true,
+    button_label_next: "Next",
+    allow_backward: false
+}
+
+
+
+    //**********************//
+    // Experiment
+    //**********************//
+
+    var timeline = [];
+
+     jsPsych.init({
+            timeline: [ dot_block],
+        });
+
+//instructions,
+
+  </script>
+</html>
