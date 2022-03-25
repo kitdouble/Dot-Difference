@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title></title>
-    <script src="http://cogflex.com.au/jspsych/jspsych 6.3.1/jspsych.js"></script>
-    <script src="http://cogflex.com.au/jspsych/jspsych 6.3.1/plugins/jspsych-instructions.js"></script>
+    <title>USYD Cognitive Flexibility</title>
+    <script src="https://unpkg.com/jspsych@7.2.1"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-instructions@1.0.0"></script>
+    <link href="https://unpkg.com/jspsych@7.2.1/css/jspsych.css" rel="stylesheet" type="text/css" />
+
     <script src="jspsych-dot-difference.js"></script>
-    <link href="http://cogflex.com.au/jspsych/jspsych 6.3.1/jspsych.css" rel="stylesheet" type="text/css" />
 
   </head>
   <body></body>
@@ -13,8 +14,12 @@
 
 
 
+
+
+//http://cogflex.com.au/jspsych/jspsych 6.3.1
+
 var dot_trial = {
-    type: "dot-difference",
+    type: jsPsychDotDifference,
     choices: ['p', 'q'],
     N_dots: [45,55],
     background_col: "grey",
@@ -32,7 +37,7 @@ var dot_block = {
 //**********************//
 
 instructions = {
-    type: 'instructions',
+    type: jsPsychInstructions,
     pages: [
     'In this experiment, you will see two squares with dots in them flash up briefly on the screen (see below). <b>Your goal is to decide which side has the most dots.</b><br><br><img src = "example.png" width="1500" height="600"></img>',
     "If you think that the square on the <b>left</b> has the most dots, hit the <b>'q'</b> key<br>If you think that the square on the <b>right</b> has the most dots, hit the <b>'p'</b> key.<br><br><img src = 'example.png' width='1500' height='600'></img><br><b>In this example, the correct answer would be the right square, so you would hit the 'p' key.</b>",
@@ -50,11 +55,20 @@ instructions = {
     // Experiment
     //**********************//
 
-    var timeline = [];
+    var timeline = [dot_block];
 
-     jsPsych.init({
-            timeline: [ dot_block],
-        });
+    var jsPsych = initJsPsych({
+      use_webaudio: false,
+      on_finish: function(){
+        jsPsych.data.displayData();
+      }
+    });
+
+
+    jsPsych.run(timeline);
+
+
+
 
 //instructions,
 
