@@ -1,7 +1,7 @@
 # jsPsych Dot Difference Plugin
 jsPsych implementation of a dot difference paradigm 
 
-To do: Implementing this in jsPsych 7.2
+
  
 
 ## Parameters
