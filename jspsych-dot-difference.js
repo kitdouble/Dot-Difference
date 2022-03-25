@@ -1,3 +1,9 @@
+
+// Kit Double
+// Dot difference
+// updated for jsPsych 7.2.1
+
+
 var jsPsychDotDifference = (function (jspsych) {
   'use strict';
 
